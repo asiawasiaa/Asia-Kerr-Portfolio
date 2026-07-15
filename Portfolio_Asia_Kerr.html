@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asia Kerr | Portfolio</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f7f4ef;
+    color:#222;
+}
+
+body{
+    position:relative;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#d8c3a5;
+    border-radius:50%;
+    top:-100px;
+    right:-100px;
+    opacity:.25;
+    z-index:-1;
+}
+
+
+body::after{
+    content:"";
+    position:fixed;
+    width:250px;
+    height:250px;
+    background:#8b7355;
+    border-radius:50%;
+    bottom:-80px;
+    left:-80px;
+    opacity:.15;
+    z-index:-1;
+}
+
+body{
+background-color:#f7f4ef;
+background-image:
+linear-gradient(#e8dccb 1px, transparent 1px),
+linear-gradient(90deg,#e8dccb 1px, transparent 1px);
+background-size:40px 40px;
+}
+
+\section p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* Navigation */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(247,244,239,.8);
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#222;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#8b7355;
+}
+
+/* Hero */
+
+.hero{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:150px 20px 20px;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:65px;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    color:#8b7355;
+    font-weight:500;
+    margin-bottom:20px;
+}
+
+.hero p{
+    line-height:1.8;
+    color:#555;
+    margin-bottom:35px;
+}
+
+.modal{
+
+     display:none;
+    position:fixed;
+    z-index:2000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.modal img{
+
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+
+}
+
+
+.close{
+
+    position:absolute;
+    top:30px;
+    right:50px;
+    color:white;
+    font-size:50px;
+    cursor:pointer;
+
+}
+
+
+
+/* Profile Image */
+
+.profile-pic{
+    width:240px;
+    height:240px;
+    object-fit:cover;
+    border-radius:50%;
+    border:6px solid #8b7355;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    margin-bottom:30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:40px;
+    background:#222;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+/* Sections */
+
+section{
+    padding:120px 15%;
+}
+
+h3{
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+/* About */
+
+.about p{
+    max-width:100%;
+    line-height:1.8;
+}
+
+/* Project Cards */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h4{
+    margin-bottom:15px;
+    text-align:center;
+    font-size:22px;
+}
+
+.image-container{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    cursor:pointer;
+    height:300px;
+}
+
+
+.overlay{
+
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-size:18px;
+    font-weight:500;
+
+    opacity:0;
+    transition:.3s ease;
+
+}
+
+
+.image-container:hover .overlay{
+
+    opacity:1;
+
+}
+
+
+.image-container:hover img{
+
+    transform:scale(1.05);
+    filter:brightness(.7);
+
+}
+
+/* Design Portfolio */
+
+.section-description{
+    max-width:100%;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+.design-gallery{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+
+}
+
+
+.design-item{
+
+    background:rgba(255,255,255,0.35);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    padding:15px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.5);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+
+}
+
+
+.design-item:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+.design-item img{
+
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:15px;
+
+}
+
+/* Skills */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.skill{
+    padding:12px 24px;
+    background:white;
+    border-radius:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.badge{
+    display:inline-block;
+    background:#8b7355;
+    padding:10px 20px;
+    border-radius:30px;
+    font-size:14px;
+    color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    margin-bottom:20px;
+}
+
+/* Footer */
+
+footer{
+    padding:60px;
+    text-align:center;
+    color:#666;
+}
+
+.card{
+    background:rgba(255,255,255,0.3) !important;
+    backdrop-filter:blur(20px) !important;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">Asia K.</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#why">Why Me</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#design">Design</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<img src="C:\Users\asiak\Downloads\Asia's Portfolio\Headshot.png" class="profile-pic">
+
+<h1>Asia Kerr</h1>
+
+<h2>Cybersecurity Student • Designer • Creator</h2>
+
+<div class="badge">
+    🟢 Available for internships & opportunities
+</div>
+
+<p>
+I enjoy building beautiful digital experiences while exploring
+cybersecurity, web design, and creative technology.
+</p>
+
+<a href="#projects" class="btn">
+View My Work
+</a>
+
+<a href="C:\Users\asiak\Downloads\Asia's Portfolio\Asia_Kerr_Resume_C.pdf" class="btn resume-btn" download>
+Download Resume
+</a>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h3>About Me</h3>
+
+<div class="about">
+
+<p>
+
+Hi! I'm <strong>Asia Kerr</strong>, a cybersecurity student at 
+St. John's University with a passion for technology, web design, 
+and digital creativity.
+
+My interests sit at the intersection of security and design. I enjoy 
+creating websites, developing digital content, and exploring ways 
+technology can be used to solve problems and create meaningful 
+experiences.
+
+Through academic projects, professional experiences, and personal 
+creative work, I have developed skills in teamwork, communication, 
+design thinking, and technical problem-solving.
+
+I am always looking for opportunities to learn, collaborate, and 
+contribute to projects where I can combine creativity with technology.
+
+</p>
+
+</div>
+
+</section>
+
+<section id="why">
+
+<h3>Why Choose Me</h3>
+
+<div class="projects">
+
+<div class="card">
+
+<h4>🚀 Fast Learner</h4>
+
+<p>
+I enjoy learning new technologies and adapting quickly to new 
+challenges. I am constantly expanding my technical and creative skills 
+to improve my work.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h4>🎨 Creative Problem Solver</h4>
+
+<p>
+I combine creativity with technology to develop solutions that are 
+functional, visually appealing, and focused on the user's experience.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h4>🤝 Team Player</h4>
+
+<p>
+I value communication, collaboration, and creating positive 
+relationships while working toward shared goals.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h4>🔒 Technology Focused</h4>
+
+<p>
+My cybersecurity background allows me to think critically about 
+technology, security, and responsible digital experiences.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<h3>Featured Projects</h3>
+
+<div class="projects">
+
+
+<div class="card">
+
+<h4>Microsoft SCIP Internship</h4>
+
+<p>
+Worked on the Website Team for the Selective Corporate Internship Program (SCIP), a Microsoft Partner. Created digital content, presentations, and 
+collaborated with teammates on professional projects while developing 
+communication, teamwork, and design skills.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h4>Graphic Design Portfolio</h4>
+
+<p>
+Created digital designs using Canva, Photoshop, and After Effects.
+Projects include presentations, graphics, and creative media pieces 
+focused on visual communication and engaging storytelling.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h4>Web Development</h4>
+
+<p>
+Built websites using HTML and CSS while continuing to develop 
+JavaScript skills. I enjoy creating websites that are clean, 
+responsive, user-friendly, and visually appealing.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+<section id="design">
+
+<h3>Design Portfolio</h3>
+
+<p class="section-description">
+
+A small collection of my creative work, including graphic design,
+digital media, presentations, and visual content created using
+tools like Canva, Photoshop, Procreate, and After Effects.
+
+</p>
+
+
+<div class="design-gallery">
+
+
+<div class="design-item">
+
+<div class="image-container" onclick="openImage(this.querySelector('img').src)">
+
+<img src="C:\Users\asiak\Downloads\Asia's Portfolio\Tutoring_Flyer.jpg">
+
+<div class="overlay">
+    Click to view
+
+</div>
+
+</div>
+
+</div>
+
+<div class="design-item">
+
+<div class="image-container" onclick="openImage(this.querySelector('img').src)">
+
+<img src="C:\Users\asiak\Downloads\Asia's Portfolio\Aunty_May_Bday.jpg">
+
+<div class="overlay">
+    Click to view
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="design-item">
+
+<div class="image-container" onclick="openImage(this.querySelector('img').src)">
+
+<img src="C:\Users\asiak\Downloads\Asia's Portfolio\Sapph's_Dinner.jpg">
+
+<div class="overlay">
+    Click to view
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="design-item">
+
+<div class="image-container" onclick="openImage(this.querySelector('img').src)">
+
+<img src="C:\Users\asiak\Downloads\Asia's Portfolio\BalloonGaloreJA5.png">
+
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+</section>
+
+<section id="skills">
+
+<h3>Skills</h3>
+
+<div class="skills">
+
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">CCNA Certified</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Canva</div>
+<div class="skill">Photoshop</div>
+<div class="skill">After Effects</div>
+<div class="skill">Cybersecurity</div>
+<div class="skill">Microsoft Office</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h3>Let's Connect!</h3>
+
+<p>
+
+I'm always open to discussing internships, collaborations, and 
+opportunities where I can continue learning and contribute my skills.
+
+<br><br>
+
+Email:
+<br>
+
+<a href="mailto:asiakerr10@gmail.com">
+asiakerr10@gmail.com
+</a>
+
+
+<br><br>
+
+
+LinkedIn:
+<br>
+
+<a href="https://www.linkedin.com/in/asia-kerr-a618322b0" target="_blank">
+
+linkedin.com/in/asia-kerr-a618322b0
+
+</a>
+
+
+</p>
+
+</section>
+
+<footer>
+
+Made with ❤️ by Asia
+
+</footer>
+
+<div id="imageModal" class="modal">
+
+<span onclick="closeImage()" class="close">&times;</span>
+
+<img id="modalImage">
+
+</div>
+
+<script>
+
+function openImage(src){
+
+    document.getElementById("imageModal").style.display="flex";
+    document.getElementById("modalImage").src=src;
+
+}
+
+
+function closeImage(){
+
+    document.getElementById("imageModal").style.display="none";
+
+}
+
+</script>
+
+</body>
+
+</html>
